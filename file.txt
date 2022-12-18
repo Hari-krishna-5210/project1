@@ -1,0 +1,109 @@
+let elements = BotUserSession.get("cart");
+let newarr = []
+for(i in elements){
+    newarr.push({
+        "Values": [i,elements[i].add, elements[i].price]
+    })
+}
+
+var message =
+{
+  "type": "template",
+  "payload":
+    {
+     "template_type": "table",
+     "text":"Cart details",
+     "columns":
+       [
+        ["Sl","center"],[" Food Name"],["price","right"]
+       ],
+     "table_design": "regular",
+     "elements": newarr,
+     speech_hint:"Here is your account details"
+    }}
+print(JSON.stringify(message));
+
+
+
+
+
+
+
+
+
+var data=[];
+let elements = BotUserSession.get("cart");
+for(i in elements)
+{
+    
+    data.push({
+        
+        "title":elements[i].add +"\n\n Price: $"+  elements[i].price,
+        "image_url":  elements[i].img,
+        "subtitle": "food",
+       
+        "buttons":
+          [{
+         "type": "postback",
+         "title": "Remove From Cart",
+         "payload":"Add " 
+        }]
+    })
+}
+
+var message = {
+  "type": 'template',
+  "payload":
+    {
+     "template_type": 'carousel',
+     "elements":data
+  }
+ }
+print(JSON.stringify(message));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var newarr=[];
+
+for(i of BotUserSession.get("cart"))
+{
+    
+newarr.push(JSON.stringify(i))
+    
+}
+
+context.newarrCart = newarr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  let getApi = [];
+    getApi.push({
+     context.Service0004.response.body.cart;
+    })
